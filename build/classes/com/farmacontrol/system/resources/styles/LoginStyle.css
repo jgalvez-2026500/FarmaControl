@@ -1,0 +1,8 @@
+.root-login { -fx-background-color: #F4F8F6; }
+.titulo { -fx-font-size: 30px; -fx-font-weight: bold; -fx-text-fill: #1F6F4A; }
+.subtitulo { -fx-font-size: 13px; -fx-text-fill: #4B5B54; }
+.etiqueta { -fx-text-fill: #243B31; -fx-font-weight: bold; }
+.text-field, .password-field { -fx-background-radius: 8px; -fx-border-radius: 8px; -fx-border-color: #A9C7B8; -fx-padding: 7px 10px; }
+.btn-primario { -fx-background-color: #1F6F4A; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px; -fx-padding: 9px 20px; -fx-cursor: hand; }
+.btn-primario:hover { -fx-background-color: #185A3C; }
+

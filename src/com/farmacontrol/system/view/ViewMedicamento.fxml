@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<!-- Diseño ancho: el formulario va en UNA fila (campos + botones al lado) para que quepa en pantalla -->
+<VBox prefHeight="620.0" prefWidth="1100.0" spacing="14.0" styleClass="root-med" stylesheets="@../resources/styles/MedicamentoStyle.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.farmacontrol.system.controller.MedicamentoController">
+   <padding>
+      <Insets bottom="20.0" left="24.0" right="24.0" top="18.0" />
+   </padding>
+   <children>
+      <HBox alignment="CENTER_LEFT" spacing="12.0">
+         <children>
+            <Label styleClass="titulo" text="FarmaControl · Botiquín" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="lblUsuario" styleClass="subtitulo" />
+            <Button mnemonicParsing="false" onAction="#onCerrarSesion" styleClass="btn-secundario" text="Cerrar sesión" />
+         </children>
+      </HBox>
+
+      <HBox alignment="BOTTOM_LEFT" spacing="12.0" styleClass="panel-form">
+         <padding>
+            <Insets bottom="14.0" left="14.0" right="14.0" top="14.0" />
+         </padding>
+         <children>
+            <VBox spacing="4.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label styleClass="etiqueta" text="Medicamento" />
+                  <TextField fx:id="txtNombre" promptText="Ej. Paracetamol" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label styleClass="etiqueta" text="Miligramos" />
+                  <TextField fx:id="txtMiligramos" prefWidth="90.0" promptText="500" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label styleClass="etiqueta" text="Stock" />
+                  <TextField fx:id="txtStock" prefWidth="80.0" promptText="0" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label styleClass="etiqueta" text="Caducidad" />
+                  <DatePicker fx:id="dpCaducidad" prefWidth="140.0" />
+               </children>
+            </VBox>
+            <VBox spacing="4.0">
+               <children>
+                  <Label styleClass="etiqueta" text="Laboratorio" />
+                  <ComboBox fx:id="cbLaboratorio" prefWidth="210.0" promptText="Seleccione laboratorio" />
+               </children>
+            </VBox>
+            <GridPane hgap="8.0" vgap="8.0">
+               <children>
+                  <Button fx:id="btnGuardar" mnemonicParsing="false" onAction="#onGuardar" prefWidth="100.0" styleClass="btn-primario" text="Guardar" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                  <Button fx:id="btnActualizar" mnemonicParsing="false" onAction="#onActualizar" prefWidth="100.0" styleClass="btn-primario" text="Actualizar" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                  <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#onEliminar" prefWidth="100.0" styleClass="btn-peligro" text="Eliminar" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                  <Button mnemonicParsing="false" onAction="#onLimpiar" prefWidth="100.0" styleClass="btn-secundario" text="Limpiar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+         </children>
+      </HBox>
+
+      <Label fx:id="lblError" managed="false" styleClass="error-label" visible="false" />
+
+      <Label styleClass="subtitulo" text="Inventario del botiquín (las filas rojas están vencidas)" />
+      <TableView fx:id="tblMedicamentos" VBox.vgrow="ALWAYS">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+         <columns>
+            <TableColumn fx:id="colNombre" text="Medicamento" />
+            <TableColumn fx:id="colMiligramos" text="Miligramos (mg)" />
+            <TableColumn fx:id="colStock" text="Stock" />
+            <TableColumn fx:id="colCaducidad" text="Caducidad" />
+            <TableColumn fx:id="colLaboratorio" text="Laboratorio" />
+         </columns>
+      </TableView>
+   </children>
+</VBox>
